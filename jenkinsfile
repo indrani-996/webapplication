@@ -1,0 +1,16 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Hello') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+        stage('checkout') {
+            steps {
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], gitTool: 'git', userRemoteConfigs: [[url: 'https://github.com/indrani-996/mvn--project.git']]])
+            }
+        }
+    }    
+}
